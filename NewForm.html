@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="NewFormStyle2.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+    <h1 id="title"><u><strong>Unknown Survey Form</strong></u></h1>
+    <p id="description">
+        Thank you for taking the time to help me improve the platform
+    </p>
+
+    <form id="survey-form">
+        <fieldset>
+
+            <label for="name" id="name-label">Name<br />
+                <input type="text" placeholder="Enter name" id="name" required />
+            </label>
+
+            <label for="email" id="email-label">Email<br /><input type="email" placeholder="Enter your Email" id="email"
+                required />
+            </label>
+
+            <script>
+                function CheckAge() {
+                    var dobInput = document.getElementById("date").value;
+                    if (dobInput) {
+                        var dob = new Date(dobInput);
+                        var diff_ms = Date.now() - dob.getTime();
+                        var age_dt = new Date(diff_ms);
+                        var age = Math.abs(age_dt.getUTCFullYear() - 1970);
+        
+                        // var message = "Age: " + age;
+        
+                        if (age < 10 || age > 120)
+                            message = "Invalid date! please input a valid one"
+
+                        document.getElementById("ageConfirmation").innerHTML = message;
+                    } 
+                }
+            </script>
+            <label for="date" id="number-label">Date of Birth (optional)<br />
+                <input type="date" id="date" oninput="CheckAge()">
+                <p id="ageConfirmation"></p>
+            </label>
+
+            <!-- <label for="number" id="number-label">Date of Birth (optional)<br />
+                <input type="date" id="date" oninput="calculate_age"/>
+                <p id="ageConfirmation" style="color: black; text-align: center;"></p>
+            </label> -->
+
+            <label>Which option best describes your current role?
+                <select>
+                    <option value="">Select current role</option>
+                    <option value="1">Student</option>
+                    <option value="2">Full time job</option>
+                    <option value="3">Full time learner</option>
+                    <option value="4">Prefer not say</option>
+                    <option value="5">Other</option>
+                </select>
+            </label>
+
+        </fieldset>
+
+        <!-- <fieldset>
+            <label>Would you recommend freeCodeCamp to a friend?</label>
+            <label><input type="radio" class="inline" value="1" name="recc" checked />Definitely
+            </label>
+            <label><input type="radio" class="inline" value="2" name="recc" />Maybe
+            </label>
+            <label><input type="radio" class="inline" value="3" name="recc" />Not sure
+            </label>
+        </fieldset> -->
+
+        <!-- <fieldset>
+            <label for="dropdown">What is your favorite feature of freeCodeCamp?
+                <select id="dropdown">
+                    <option value="">Select an option</option>
+                    <option value="1">Challenges</option>
+                    <option value="2">Projects</option>
+                    <option value="3">Community</option>
+                    <option value="4">Open source</option>
+                </select>
+            </label>
+        </fieldset> -->
+
+        <fieldset>
+            <label>What would you like to see improved?</label>
+            <label for="improve"><input type="checkbox" id="improve" class="inline" value="1" />Front-end
+                Projects</label>
+            <label for="improve"><input type="checkbox" id="improve" class="inline" value="2" />Back-end
+                Projects</label>
+            <!-- <label for="improve"><input type="checkbox" id="improve" class="inline" value="3" />Data
+                Visualization</label>
+            <label for="improve"><input type="checkbox" id="improve" class="inline" value="4" />Challenges</label>
+            <label for="improve"><input type="checkbox" id="improve" class="inline" value="5" />Open
+                Source Community</label>
+            <label for="improve"><input type="checkbox" id="improve" class="inline" value="6" />Gitter
+                help rooms</label>
+            <label for="improve"><input type="checkbox" id="improve" class="inline" value="7" />Videos</label>
+            <label for="improve"><input type="checkbox" id="improve" class="inline" value="8" />City
+                Meetups</label> -->
+        </fieldset>
+
+        <fieldset>
+            <label>Any comments or suggestions?</label><textarea id="bio" name="comments" rows="3" cols="30"
+                placeholder="Enter your comment here!"></textarea>
+        </fieldset>
+
+    </form>
+
+    <script type="text/javascript">
+        function getConfirmationForSubmit(){
+            let text;
+            var result = confirm("Do you wish to Submit the form?");
+            if(result==true)
+                text = "Your form has been successufully submitted!<br>Thankyou for reaching out to us. :)";
+            else{
+                text = "Your form was NOT submitted, all the contents are lost.<br>Please reload the page to fill again. :(";}
+            
+            document.getElementById(courseName).innerHTML = text;
+
+            // var result = confirm("Do you wish to Submit the form?");
+            // if(result==true){
+            //     document.write("Your form has been successufully submitted!<br>Thankyou for reaching out to us.");
+            //     return true;}
+            // else{
+            //     document.write("Your form was NOT submitted, all the contents are lost.<br>Please reload the page to fill again");
+            //     return false;}
+        }
+    </script>
+
+    <input type="submit" id="submit" value="Submit" onclick="getConfirmationForSubmit()"/>
+    <p id="SubmitConfirm" style="color: black; text-align: center;"></p>
+</body>
+
+</html>
